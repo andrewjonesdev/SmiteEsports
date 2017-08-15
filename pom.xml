@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>SmiteScraper</groupId>
+    <artifactId>SmiteEsports</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <repositories>
+        <repository>
+            <id>rubygems-proxy</id>
+            <name>Rubygems Proxy</name>
+            <url>http://rubygems-proxy.torquebox.org/releases</url>
+            <layout>default</layout>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+                <updatePolicy>never</updatePolicy>
+            </snapshots>
+        </repository>
+
+    </repositories>
+    <!-- https://mvnrepository.com/artifact/org.jruby/jruby-complete -->
+    <dependencies>
+    <dependency>
+        <groupId>org.jruby</groupId>
+        <artifactId>jruby-complete</artifactId>
+        <version>9.1.12.0</version>
+    </dependency>
+        <dependency>
+            <groupId>rubygems</groupId>
+            <artifactId>nokogiri</artifactId>
+            <version>1.8.0-java</version>
+            <type>gem</type>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.8.2</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    <build>
+    <plugins>
+        <plugin>
+            <groupId>de.saumya.mojo</groupId>
+            <artifactId>gem-maven-plugin</artifactId>
+            <version>1.0.0</version>
+            <configuration>
+                <includeRubygemsInResources>true</includeRubygemsInResources>
+            </configuration>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>initialize</goal>
+                        <goal>exec</goal>
+                    </goals>
+                    <phase>compile</phase>
+                    <configuration>
+                        <execArgs>${project.build.directory}/rubygems/bin/nokogiri compile ${basedir}/src/main/webapp/resources/sass</execArgs>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+    </plugins>
+    </build>
+</project>
