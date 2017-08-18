@@ -28,6 +28,7 @@ public class SmiteDatabase {
         //container.setHomeDirectory("/jruby-9.0.5.0");
         return container.runScriptlet(" require 'rubygems'\n" +
                 "require 'open-uri'\n" +
+                " require 'rubygems'\n" +
                 "require 'nokogiri'\n" +
                 "\n" +
                 "url = 'http://esports.smitegame.com/s4-spring-split-landing-page/'\n" +
