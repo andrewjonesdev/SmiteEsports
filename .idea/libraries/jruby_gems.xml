@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="jruby-gems">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/jruby-gems.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
